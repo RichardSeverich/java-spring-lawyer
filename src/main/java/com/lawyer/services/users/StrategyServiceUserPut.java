@@ -1,6 +1,6 @@
 package com.lawyer.services.users;
 
-import com.lawyer.helpers.HelperUser;
+import com.lawyer.helpers.Helper;
 import com.lawyer.models.User;
 import com.lawyer.repository.RepositoryUser;
 import com.lawyer.responses.ResponseBuilderUser;
@@ -21,7 +21,7 @@ public class StrategyServiceUserPut implements StrategyService {
     private RepositoryUser repositoryUser;
 
     @Autowired
-    private HelperUser helperUser;
+    private Helper<User> helper;
 
     @Autowired
     private ResponseBuilderUser responseBuilderUser;
@@ -31,11 +31,11 @@ public class StrategyServiceUserPut implements StrategyService {
      */
     @Override
     public Response getResponse() {
-        User user = repositoryUser.findById(helperUser.getId()).orElse(null);
-        helperUser.getEmptyList().add(helperUser.getEntity());
+        User user = repositoryUser.findById(helper.getId()).orElse(null);
+        helper.getList().add(helper.getEntity());
         // If user not exist.
         if (user != null) {
-            repositoryUser.save(helperUser.getEntity());
+            repositoryUser.save(helper.getEntity());
             return responseBuilderUser.getResponseOkForPut();
         }
         return responseBuilderUser.getResponseNotFound();

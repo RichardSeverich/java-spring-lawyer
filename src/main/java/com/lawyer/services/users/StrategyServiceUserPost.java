@@ -1,6 +1,6 @@
 package com.lawyer.services.users;
 
-import com.lawyer.helpers.HelperUser;
+import com.lawyer.helpers.Helper;
 import com.lawyer.models.User;
 import com.lawyer.repository.RepositoryUser;
 import com.lawyer.responses.ResponseBuilderUser;
@@ -20,7 +20,7 @@ public class StrategyServiceUserPost implements StrategyService {
     private RepositoryUser repositoryUser;
 
     @Autowired
-    private HelperUser helperUser;
+    private Helper<User> helper;
 
     @Autowired
     private ResponseBuilderUser responseBuilderUser;
@@ -30,10 +30,10 @@ public class StrategyServiceUserPost implements StrategyService {
      */
     @Override
     public Response getResponse() {
-        helperUser.getList().add(helperUser.getEntity());
-        User user = repositoryUser.findById(helperUser.getEntity().getId()).orElse(null);
+        helper.getList().add(helper.getEntity());
+        User user = repositoryUser.findById(helper.getEntity().getId()).orElse(null);
         if (user == null) {
-            repositoryUser.save(helperUser.getEntity());
+            repositoryUser.save(helper.getEntity());
             return responseBuilderUser.getResponseOkForPost();
         } else {
             return responseBuilderUser.getResponseConflict();

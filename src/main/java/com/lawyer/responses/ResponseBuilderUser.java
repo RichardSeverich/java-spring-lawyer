@@ -1,7 +1,7 @@
 package com.lawyer.responses;
 
 import com.lawyer.models.User;
-import com.lawyer.helpers.HelperUser;
+import com.lawyer.helpers.Helper;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,25 +16,27 @@ import org.springframework.context.annotation.ScopedProxyMode;
 public class ResponseBuilderUser {
 
     @Autowired
-    private HelperUser helperUser;
+    private Helper<User> helper;
+
+    Response<User> response;
 
     /**
      * Constructor.
      */
     public  ResponseBuilderUser() {
-
+       this.response = new Response<>();
     }
 
     /**
      * @return responses.
      */
     public Response<User> getResponseOkForGet() {
-        Response<User> response = ResponseManager.getResponseUser();
-        response
+        helper.setEntityName("user");
+        this.response
                 .setHttpStatus(HttpStatus.OK)
                 .getBody()
-                .setTextMessage(ResponseMessage.getSuccessfully(helperUser.getEntityName()))
-                .setData(helperUser.getList());
+                .setTextMessage(ResponseMessage.getSuccessfully(helper.getEntityName()))
+                .setData(helper.getList());
         return response;
     }
 
@@ -42,12 +44,12 @@ public class ResponseBuilderUser {
      * @return responses.
      */
     public Response<User> getResponseOkForPost() {
-        Response<User> response = ResponseManager.getResponseUser();
-        response
+        helper.setEntityName("user");
+        this.response
                 .setHttpStatus(HttpStatus.CREATED)
                 .getBody()
-                .setTextMessage(ResponseMessage.createdSuccessfully(helperUser.getEntityName()))
-                .setData(helperUser.getList());
+                .setTextMessage(ResponseMessage.createdSuccessfully(helper.getEntityName()))
+                .setData(helper.getList());
         return response;
     }
 
@@ -55,12 +57,12 @@ public class ResponseBuilderUser {
      * @return responses.
      */
     public Response<User> getResponseOkForPut() {
-        Response<User> response = ResponseManager.getResponseUser();
-        response
+        helper.setEntityName("user");
+        this.response
                 .setHttpStatus(HttpStatus.OK)
                 .getBody()
-                .setTextMessage(ResponseMessage.updatedSuccessfully(helperUser.getEntityName()))
-                .setData(helperUser.getList());
+                .setTextMessage(ResponseMessage.updatedSuccessfully(helper.getEntityName()))
+                .setData(helper.getList());
         return response;
     }
 
@@ -68,12 +70,12 @@ public class ResponseBuilderUser {
      * @return responses.
      */
     public Response<User> getResponseOkForDelete() {
-        Response<User> response = ResponseManager.getResponseUser();
-        response
+        helper.setEntityName("user");
+        this.response
                 .setHttpStatus(HttpStatus.OK)
                 .getBody()
-                .setTextMessage(ResponseMessage.deletedSuccessfully(helperUser.getEntityName()))
-                .setData(helperUser.getEmptyList());
+                .setTextMessage(ResponseMessage.deletedSuccessfully(helper.getEntityName()))
+                .setData(helper.getList());
         return response;
     }
 
@@ -81,12 +83,12 @@ public class ResponseBuilderUser {
      * @return responses.
      */
     public Response<User> getResponseConflict() {
-        Response<User> response = ResponseManager.getResponseUser();
-        response
+        helper.setEntityName("user");
+        this.response
                 .setHttpStatus(HttpStatus.CONFLICT)
                 .getBody()
-                .setTextMessage(ResponseMessage.entityAlreadyExist(helperUser.getEntityName()))
-                .setData(helperUser.getEmptyList());
+                .setTextMessage(ResponseMessage.entityAlreadyExist(helper.getEntityName()))
+                .setData(helper.getList());
         return response;
     }
 
@@ -94,12 +96,12 @@ public class ResponseBuilderUser {
      * @return responses.
      */
     public Response<User> getResponseNotFound() {
-        Response<User> response = ResponseManager.getResponseUser();
-        response
+        helper.setEntityName("user");
+        this.response
                 .setHttpStatus(HttpStatus.NOT_FOUND)
                 .getBody()
-                .setTextMessage(ResponseMessage.entityNotFound(helperUser.getEntityName()))
-                .setData(helperUser.getEmptyList());
+                .setTextMessage(ResponseMessage.entityNotFound(helper.getEntityName()))
+                .setData(helper.getList());
         return response;
     }
 
@@ -107,12 +109,12 @@ public class ResponseBuilderUser {
      * @return responses.
      */
     public Response<User> getResponseConflictEntityHasRelations() {
-        Response<User> response = ResponseManager.getResponseUser();
-        response
+        helper.setEntityName("user");
+        this.response
                 .setHttpStatus(HttpStatus.CONFLICT)
                 .getBody()
-                .setTextMessage(ResponseMessage.entityHasRelation(helperUser.getEntityName()))
-                .setData(helperUser.getEmptyList());
-        return response;
+                .setTextMessage(ResponseMessage.entityHasRelation(helper.getEntityName()))
+                .setData(helper.getList());
+         return this.response;
     }
 }

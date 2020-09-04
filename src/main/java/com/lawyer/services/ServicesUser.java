@@ -2,7 +2,7 @@ package com.lawyer.services;
 
 import com.lawyer.models.User;
 import com.lawyer.responses.Response;
-import com.lawyer.helpers.HelperUser;
+import com.lawyer.helpers.Helper;
 import com.lawyer.services.users.StrategyServiceUserDelete;
 import com.lawyer.services.users.StrategyServiceUserGet;
 import com.lawyer.services.users.StrategyServiceUserGetById;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Users Services.
+ * Services.
  */
 @Service
 public class ServicesUser {
@@ -36,7 +36,7 @@ public class ServicesUser {
     private StrategyServiceUserDelete strategyDelete;
 
     @Autowired
-    private HelperUser helperUser;
+    private Helper<User> helper;
 
     /**
      * Constructor.
@@ -57,7 +57,7 @@ public class ServicesUser {
      * @return Response.
      */
     public Response getById(final String id) {
-        helperUser.setId(id);
+        helper.setId(id);
         return strategyManager.getResponse(strategyGetById);
     }
 
@@ -66,7 +66,7 @@ public class ServicesUser {
      * @return Response.
      */
     public Response add(final User user) {
-        helperUser.setEntity(user);
+        helper.setEntity(user);
         return strategyManager.getResponse(strategyPost);
     }
 
@@ -76,8 +76,8 @@ public class ServicesUser {
      * @return Response.
      */
     public Response update(final User user, final String id) {
-        helperUser.setId(id);
-        helperUser.setEntity(user);
+        helper.setId(id);
+        helper.setEntity(user);
         return strategyManager.getResponse(strategyPut);
     }
 
@@ -86,7 +86,7 @@ public class ServicesUser {
      * @return Response.
      */
     public Response delete(final String id) {
-        helperUser.setId(id);
+        helper.setId(id);
         return strategyManager.getResponse(strategyDelete);
     }
 }

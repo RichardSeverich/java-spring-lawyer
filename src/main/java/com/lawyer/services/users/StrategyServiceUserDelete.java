@@ -1,6 +1,7 @@
 package com.lawyer.services.users;
 
-import com.lawyer.helpers.HelperUser;
+import com.lawyer.models.User;
+import com.lawyer.helpers.Helper;
 import com.lawyer.repository.RepositoryUser;
 import com.lawyer.responses.ResponseBuilderUser;
 import com.lawyer.services.StrategyService;
@@ -20,7 +21,7 @@ public class StrategyServiceUserDelete implements StrategyService {
     private RepositoryUser repositoryUser;
 
     @Autowired
-    private HelperUser helperUser;
+    private Helper<User> helper;
 
     @Autowired
     private ResponseBuilderUser responseBuilderUser;
@@ -30,8 +31,8 @@ public class StrategyServiceUserDelete implements StrategyService {
      */
     @Override
     public Response getResponse() {
-        if (repositoryUser.findById(helperUser.getId()).orElse(null) != null) {
-            repositoryUser.deleteById(helperUser.getId());
+        if (repositoryUser.findById(helper.getId()).orElse(null) != null) {
+            repositoryUser.deleteById(helper.getId());
             return responseBuilderUser.getResponseOkForDelete();
         }
         return responseBuilderUser.getResponseNotFound();

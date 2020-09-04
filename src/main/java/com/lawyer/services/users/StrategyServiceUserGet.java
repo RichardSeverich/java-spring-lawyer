@@ -1,6 +1,6 @@
 package com.lawyer.services.users;
 
-import com.lawyer.helpers.HelperUser;
+import com.lawyer.helpers.Helper;
 import com.lawyer.models.User;
 import com.lawyer.repository.RepositoryUser;
 import com.lawyer.responses.ResponseBuilderUser;
@@ -26,7 +26,7 @@ public class StrategyServiceUserGet implements StrategyService {
     }
 
     @Autowired
-    private HelperUser helperUser;
+    private Helper<User> helper;
 
     @Autowired
     private ResponseBuilderUser responseBuilderUser;
@@ -38,7 +38,7 @@ public class StrategyServiceUserGet implements StrategyService {
     public Response getResponse() {
         Iterable<User> iterable = this.repositoryUser.findAll();
         //helperUser.getEmptyList();
-        iterable.forEach(helperUser.getList()::add);
+        iterable.forEach(helper.getList()::add);
         return responseBuilderUser.getResponseOkForGet();
     }
 }
