@@ -7,16 +7,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 import org.springframework.context.annotation.Scope;
-//import org.springframework.web.context.annotation.RequestScope;
-//import org.springframework.web.context.WebApplicationContext;
+import org.springframework.context.annotation.ScopedProxyMode;
 
 /**
  * Helper Class.
  */
 @Component
-//@RequestScope
-//@Scope(WebApplicationContext.SCOPE_REQUEST)
-public final class HelperUser {
+//@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope("request")
+public class HelperUser {
 
     private static final String ENTITY_NAME = "user";
     private String id;
@@ -26,8 +26,7 @@ public final class HelperUser {
     /**
      * Constructor.
      */
-    private HelperUser() {
-        System.out.println("ENTROOOOOOOOOOOOOOOOOOOO CARAJOOOOOOOOOOOOO");
+    public HelperUser() {
         userList = new ArrayList<>();
     }
 

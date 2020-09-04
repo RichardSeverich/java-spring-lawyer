@@ -6,16 +6,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.context.annotation.Scope;
-//import org.springframework.web.context.annotation.RequestScope;
-//import org.springframework.web.context.WebApplicationContext;
+import org.springframework.context.annotation.ScopedProxyMode;
 
 /**
  * Response Builder.
  */
 @Component
-//@RequestScope
-//@Scope(WebApplicationContext.SCOPE_REQUEST)
-public final class ResponseBuilderUser {
+//@Scope("request")
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class ResponseBuilderUser {
 
     @Autowired
     private HelperUser helperUser;
@@ -23,7 +22,7 @@ public final class ResponseBuilderUser {
     /**
      * Constructor.
      */
-    private ResponseBuilderUser() {
+    public  ResponseBuilderUser() {
 
     }
 
