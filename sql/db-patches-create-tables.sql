@@ -1,0 +1,18 @@
+CREATE TABLE users(
+   id VARCHAR(7) NOT NULL,
+   password VARCHAR(20) NOT NULL,
+   name VARCHAR(20) NOT NULL,
+   last_name VARCHAR(20) NOT NULL,
+   birth_date DATE NOT NULL,
+   email TEXT NOT NULL,
+   type VARCHAR(6) NOT NULL,
+   PRIMARY KEY (id)
+);
+
+CREATE TABLE items(
+   id INT AUTO_INCREMENT,
+   name TEXT NOT NULL,
+   price DOUBLE NOT NULL,
+   stock INT NOT NULL,
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
