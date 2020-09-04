@@ -12,7 +12,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
  * Response Builder.
  */
 @Component
-//@Scope("request")
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ResponseBuilderUser {
 

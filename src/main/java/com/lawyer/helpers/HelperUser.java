@@ -13,9 +13,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
  * Helper Class.
  */
 @Component
-//@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-//@Scope("request")
 public class HelperUser {
 
     private static final String ENTITY_NAME = "user";
