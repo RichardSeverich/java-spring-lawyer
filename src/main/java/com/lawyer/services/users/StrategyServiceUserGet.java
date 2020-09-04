@@ -31,7 +31,6 @@ public class StrategyServiceUserGet implements StrategyService {
     @Override
     public Response getResponse() {
         Iterable<User> iterable = this.repositoryUser.findAll();
-        //helperUser.getEmptyList();
         iterable.forEach(helper.getList()::add);
         return responseBuilder.getResponseOkForGet();
     }

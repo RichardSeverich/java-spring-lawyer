@@ -32,7 +32,7 @@ public class StrategyServiceUserGetById implements StrategyService {
     public Response getResponse() {
         User user = repositoryUser.findById(helper.getId()).orElse(null);
         if (user != null) {
-            //helperUser.getEmptyList().add(user);
+            helperUser.getList().add(user);
             return responseBuilder.getResponseOkForGet();
         } else {
             return responseBuilder.getResponseNotFound();
