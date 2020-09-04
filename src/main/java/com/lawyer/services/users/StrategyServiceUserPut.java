@@ -33,11 +33,11 @@ public class StrategyServiceUserPut implements StrategyService {
     public Response getResponse() {
         User user = repositoryUser.findById(helper.getId()).orElse(null);
         helper.getList().add(helper.getEntity());
-        // If user not exist.
-        if (user != null) {
-            repositoryUser.save(helper.getEntity());
-            return responseBuilder.getResponseOkForPut();
+        // Negative scenario
+        if (user == null) {
+           return responseBuilder.getResponseNotFound();    
         }
-        return responseBuilder.getResponseNotFound();
+        repositoryUser.save(helper.getEntity());
+        return responseBuilder.getResponseOkForPut();
     }
 }

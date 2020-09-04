@@ -32,11 +32,12 @@ public class StrategyServiceUserPost implements StrategyService {
     public Response getResponse() {
         helper.getList().add(helper.getEntity());
         User user = repositoryUser.findById(helper.getEntity().getId()).orElse(null);
-        if (user == null) {
-            repositoryUser.save(helper.getEntity());
-            return responseBuilder.getResponseOkForPost();
-        } else {
+        // Negative scenario
+        if (user != null) {
             return responseBuilder.getResponseConflict();
         }
+        // Positive scenario
+        repositoryUser.save(helper.getEntity());
+        return responseBuilder.getResponseOkForPost();
     }
 }

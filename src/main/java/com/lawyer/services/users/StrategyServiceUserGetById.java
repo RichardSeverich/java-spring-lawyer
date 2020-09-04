@@ -31,11 +31,12 @@ public class StrategyServiceUserGetById implements StrategyService {
     @Override
     public Response getResponse() {
         User user = repositoryUser.findById(helper.getId()).orElse(null);
-        if (user != null) {
-            helperUser.getList().add(user);
-            return responseBuilder.getResponseOkForGet();
-        } else {
-            return responseBuilder.getResponseNotFound();
+        // Negative scenario
+        if (user == null) {
+          return responseBuilder.getResponseNotFound();
         }
+        // Positive scenario 
+        helper.getList().add(user);
+        return responseBuilder.getResponseOkForGet();  
     }
 }

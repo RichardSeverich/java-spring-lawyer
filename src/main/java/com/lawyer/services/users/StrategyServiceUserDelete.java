@@ -31,10 +31,12 @@ public class StrategyServiceUserDelete implements StrategyService {
      */
     @Override
     public Response getResponse() {
-        if (repositoryUser.findById(helper.getId()).orElse(null) != null) {
-            repositoryUser.deleteById(helper.getId());
-            return responseBuilder.getResponseOkForDelete();
+        // Negative scenario
+        if (repositoryUser.findById(helper.getId()).orElse(null) == null) {
+            return responseBuilder.getResponseNotFound();   
         }
-        return responseBuilder.getResponseNotFound();
+        // Positive scenario
+        repositoryUser.deleteById(helper.getId());
+        return responseBuilder.getResponseOkForDelete();
     }
 }
