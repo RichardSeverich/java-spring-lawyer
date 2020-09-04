@@ -3,7 +3,7 @@ package com.lawyer.services.users;
 import com.lawyer.models.User;
 import com.lawyer.helpers.Helper;
 import com.lawyer.repository.RepositoryUser;
-import com.lawyer.responses.ResponseBuilderUser;
+import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.services.StrategyService;
 import com.lawyer.responses.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class StrategyServiceUserDelete implements StrategyService {
     private Helper<User> helper;
 
     @Autowired
-    private ResponseBuilderUser responseBuilderUser;
+    private ResponseBuilder<User> responseBuilder;
 
     /**
      * {@inheritDoc}
@@ -33,8 +33,8 @@ public class StrategyServiceUserDelete implements StrategyService {
     public Response getResponse() {
         if (repositoryUser.findById(helper.getId()).orElse(null) != null) {
             repositoryUser.deleteById(helper.getId());
-            return responseBuilderUser.getResponseOkForDelete();
+            return responseBuilder.getResponseOkForDelete();
         }
-        return responseBuilderUser.getResponseNotFound();
+        return responseBuilder.getResponseNotFound();
     }
 }

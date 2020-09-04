@@ -3,7 +3,7 @@ package com.lawyer.services.users;
 import com.lawyer.helpers.Helper;
 import com.lawyer.models.User;
 import com.lawyer.repository.RepositoryUser;
-import com.lawyer.responses.ResponseBuilderUser;
+import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.services.StrategyService;
 import com.lawyer.responses.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class StrategyServiceUserGetById implements StrategyService {
     private Helper<User> helper;
 
     @Autowired
-    private ResponseBuilderUser responseBuilderUser;
+    private ResponseBuilder<User> responseBuilder;
 
     /**
      * {@inheritDoc}
@@ -33,9 +33,9 @@ public class StrategyServiceUserGetById implements StrategyService {
         User user = repositoryUser.findById(helper.getId()).orElse(null);
         if (user != null) {
             //helperUser.getEmptyList().add(user);
-            return responseBuilderUser.getResponseOkForGet();
+            return responseBuilder.getResponseOkForGet();
         } else {
-            return responseBuilderUser.getResponseNotFound();
+            return responseBuilder.getResponseNotFound();
         }
     }
 }
