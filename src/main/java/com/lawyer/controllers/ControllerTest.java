@@ -3,7 +3,6 @@ package com.lawyer.controllers;
 import com.lawyer.models.User;
 import com.lawyer.responses.Response;
 import com.lawyer.responses.ResponseBody;
-import com.lawyer.services.ServicesUser;
 import com.lawyer.support.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

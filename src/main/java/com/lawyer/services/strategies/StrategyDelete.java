@@ -1,8 +1,7 @@
-package com.lawyer.services.users;
+package com.lawyer.services.strategies;
 
-import com.lawyer.models.User;
 import com.lawyer.helpers.Helper;
-import com.lawyer.repository.RepositoryUser;
+import com.lawyer.repository.RepositoryEntity;
 import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.services.StrategyService;
 import com.lawyer.responses.Response;
@@ -15,16 +14,16 @@ import java.util.List;
  * Service.
  */
 @Service
-public class StrategyServiceUserDelete implements StrategyService {
+public class StrategyDelete<T> implements StrategyService {
 
     @Autowired
-    private RepositoryUser repositoryUser;
+    private RepositoryEntity<T> repository;
 
     @Autowired
-    private Helper<User> helper;
+    private Helper<T> helper;
 
     @Autowired
-    private ResponseBuilder<User> responseBuilder;
+    private ResponseBuilder<T> responseBuilder;
 
     /**
      * {@inheritDoc}
@@ -32,11 +31,12 @@ public class StrategyServiceUserDelete implements StrategyService {
     @Override
     public Response getResponse() {
         // Negative scenario
-        if (repositoryUser.findById(helper.getId()).orElse(null) == null) {
+        T entity = repository.findById(helper.getId()).orElse(null);
+        if (entity == null) {
             return responseBuilder.getResponseNotFound();   
         }
         // Positive scenario
-        repositoryUser.deleteById(helper.getId());
+        repository.deleteById(helper.getId());
         return responseBuilder.getResponseOkForDelete();
     }
 }

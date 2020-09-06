@@ -3,11 +3,11 @@ package com.lawyer.services;
 import com.lawyer.models.User;
 import com.lawyer.responses.Response;
 import com.lawyer.helpers.Helper;
-import com.lawyer.services.users.StrategyServiceUserDelete;
-import com.lawyer.services.users.StrategyServiceUserGet;
-import com.lawyer.services.users.StrategyServiceUserGetById;
-import com.lawyer.services.users.StrategyServiceUserPost;
-import com.lawyer.services.users.StrategyServiceUserPut;
+import com.lawyer.services.strategies.StrategyDelete;
+import com.lawyer.services.strategies.StrategyGet;
+import com.lawyer.services.strategies.StrategyGetById;
+import com.lawyer.services.strategies.StrategyPost;
+import com.lawyer.services.strategies.StrategyPut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,33 +15,33 @@ import org.springframework.stereotype.Service;
  * Services.
  */
 @Service
-public class ServicesUser {
+public class Services<T> {
 
     private StrategyManager strategyManager;
 
     // Import Strategies
     @Autowired
-    private StrategyServiceUserGet strategyGet;
+    private StrategyGet<T> strategyGet;
 
     @Autowired
-    private StrategyServiceUserGetById strategyGetById;
+    private StrategyGetById<T> strategyGetById;
 
     @Autowired
-    private StrategyServiceUserPost strategyPost;
+    private StrategyPost<T> strategyPost;
 
     @Autowired
-    private StrategyServiceUserPut strategyPut;
+    private StrategyPut<T> strategyPut;
 
     @Autowired
-    private StrategyServiceUserDelete strategyDelete;
+    private StrategyDelete<T> strategyDelete;
 
     @Autowired
-    private Helper<User> helper;
+    private Helper<T> helper;
 
     /**
      * Constructor.
      */
-    ServicesUser() {
+    Services() {
         strategyManager = new StrategyManager();
     }
 
@@ -56,28 +56,28 @@ public class ServicesUser {
      * @param id id.
      * @return Response.
      */
-    public Response getById(final String id) {
+    public Response getById(final Integer id) {
         helper.setId(id);
         return strategyManager.getResponse(strategyGetById);
     }
 
     /**
-     * @param user user.
+     * @param entity entity.
      * @return Response.
      */
-    public Response add(final User user) {
-        helper.setEntity(user);
+    public Response add(final T entity) {
+        helper.setEntity(entity);
         return strategyManager.getResponse(strategyPost);
     }
 
     /**
-     * @param user user.
+     * @param entity entity.
      * @param id   id.
      * @return Response.
      */
-    public Response update(final User user, final String id) {
+    public Response update(final T entity, final Integer id) {
         helper.setId(id);
-        helper.setEntity(user);
+        helper.setEntity(entity);
         return strategyManager.getResponse(strategyPut);
     }
 
@@ -85,7 +85,7 @@ public class ServicesUser {
      * @param id id.
      * @return Response.
      */
-    public Response delete(final String id) {
+    public Response delete(final Integer id) {
         helper.setId(id);
         return strategyManager.getResponse(strategyDelete);
     }

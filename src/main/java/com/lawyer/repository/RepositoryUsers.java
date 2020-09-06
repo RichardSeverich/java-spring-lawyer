@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * Interface.
  */
 @Repository
-public interface RepositoryUser extends JpaRepository<User, String> {
+public interface RepositoryUsers extends RepositoryEntity<User> {
 
 }

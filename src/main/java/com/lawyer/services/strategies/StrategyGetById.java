@@ -1,8 +1,7 @@
-package com.lawyer.services.users;
+package com.lawyer.services.strategies;
 
 import com.lawyer.helpers.Helper;
-import com.lawyer.models.User;
-import com.lawyer.repository.RepositoryUser;
+import com.lawyer.repository.RepositoryEntity;
 import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.services.StrategyService;
 import com.lawyer.responses.Response;
@@ -14,29 +13,29 @@ import org.springframework.stereotype.Service;
  * Service.
  */
 @Service
-public class StrategyServiceUserGetById implements StrategyService {
+public class StrategyGetById<T> implements StrategyService {
 
     @Autowired
-    private RepositoryUser repositoryUser;
+    private RepositoryEntity<T> repository;
 
     @Autowired
-    private Helper<User> helper;
+    private Helper<T> helper;
 
     @Autowired
-    private ResponseBuilder<User> responseBuilder;
+    private ResponseBuilder<T> responseBuilder;
 
     /**
      * {@inheritDoc}
      */
     @Override
     public Response getResponse() {
-        User user = repositoryUser.findById(helper.getId()).orElse(null);
+        T entity = repository.findById(helper.getId()).orElse(null);
         // Negative scenario
-        if (user == null) {
+        if (entity == null) {
           return responseBuilder.getResponseNotFound();
         }
         // Positive scenario 
-        helper.getList().add(user);
+        helper.getList().add(entity);
         return responseBuilder.getResponseOkForGet();  
     }
 }

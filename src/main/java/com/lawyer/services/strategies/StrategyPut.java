@@ -1,8 +1,7 @@
-package com.lawyer.services.users;
+package com.lawyer.services.strategies;
 
 import com.lawyer.helpers.Helper;
-import com.lawyer.models.User;
-import com.lawyer.repository.RepositoryUser;
+import com.lawyer.repository.RepositoryEntity;
 import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.services.StrategyService;
 import com.lawyer.responses.Response;
@@ -15,29 +14,31 @@ import java.util.List;
  * Service.
  */
 @Service
-public class StrategyServiceUserPut implements StrategyService {
+public class StrategyPut<T> implements StrategyService {
 
     @Autowired
-    private RepositoryUser repositoryUser;
+    private RepositoryEntity<T> repository;
 
     @Autowired
-    private Helper<User> helper;
+    private Helper<T> helper;
 
     @Autowired
-    private ResponseBuilder<User> responseBuilder;
+    private ResponseBuilder<T> responseBuilder;
 
     /**
      * {@inheritDoc}
      */
     @Override
     public Response getResponse() {
-        User user = repositoryUser.findById(helper.getId()).orElse(null);
-        helper.getList().add(helper.getEntity());
+        Integer id = helper.getId();
+        T entity = repository.findById(id).orElse(null);
+        helper.getList().add(entity);
         // Negative scenario
-        if (user == null) {
+        if (entity == null) {
            return responseBuilder.getResponseNotFound();    
         }
-        repositoryUser.save(helper.getEntity());
+        // Positive scenario
+        repository.save(entity);
         return responseBuilder.getResponseOkForPut();
     }
 }
