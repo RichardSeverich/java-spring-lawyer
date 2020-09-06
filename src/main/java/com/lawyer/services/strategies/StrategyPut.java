@@ -31,14 +31,15 @@ public class StrategyPut<T> implements StrategyService {
     @Override
     public Response getResponse() {
         Integer id = helper.getId();
-        T entity = repository.findById(id).orElse(null);
-        helper.getList().add(entity);
+        T entityExist = repository.findById(id).orElse(null);
         // Negative scenario
-        if (entity == null) {
+        if (entityExist == null) {
            return responseBuilder.getResponseNotFound();    
         }
         // Positive scenario
+        T entity = helper.getEntity();
         repository.save(entity);
+        helper.getList().add(entity);
         return responseBuilder.getResponseOkForPut();
     }
 }
