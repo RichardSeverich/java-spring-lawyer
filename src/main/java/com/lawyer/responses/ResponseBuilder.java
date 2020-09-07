@@ -110,17 +110,6 @@ public class ResponseBuilder<T> {
     /**
      * @return responses.
      */
-    public Response<T> getResponseConflictEntityHasRelations() {
-        this.entityName = helper.getEntityName();
-        this.response.setHttpStatus(HttpStatus.CONFLICT);
-        this.message = ResponseMessage.entityHasRelation(entityName);
-        this.buildBody();
-        return this.response;
-    }
-
-    /**
-     * @return responses.
-     */
     public Response<T> getResponseDataAccessException() {
         this.response.setHttpStatus(HttpStatus.CONFLICT);
         this.message = helper.getDataAccessException();
