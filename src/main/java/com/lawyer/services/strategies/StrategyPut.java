@@ -8,6 +8,7 @@ import com.lawyer.repository.RepositoryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
@@ -40,8 +41,13 @@ public class StrategyPut<T> implements StrategyService {
         }
         // Positive scenario
         T entity = helper.getEntity();
-        repository.save(entity);
         helper.getList().add(entity);
-        return responseBuilder.getResponseOkForPut();
+        try {
+            repository.save(entity);
+            return responseBuilder.getResponseOkForPut();
+        } catch (DataAccessException ex) {
+            helper.setDataAccessException(ex.getMostSpecificCause().getMessage());
+            return responseBuilder.getResponseDataAccessException();
+        }
     }
 }

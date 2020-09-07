@@ -8,6 +8,7 @@ import com.lawyer.responses.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
@@ -38,7 +39,12 @@ public class StrategyDelete<T> implements StrategyService {
             return responseBuilder.getResponseNotFound();   
         }
         // Positive scenario
-        repository.deleteById(helper.getId());
-        return responseBuilder.getResponseOkForDelete();
+         try {
+            repository.deleteById(helper.getId());
+            return responseBuilder.getResponseOkForDelete();
+        } catch (DataAccessException ex) {
+            helper.setDataAccessException(ex.getMostSpecificCause().getMessage());
+            return responseBuilder.getResponseDataAccessException();
+        }
     }
 }

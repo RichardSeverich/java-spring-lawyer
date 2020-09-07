@@ -27,6 +27,8 @@ public class Helper<T> {
     private T entity;
     @Getter @Setter
     private List<T> list;
+    @Getter @Setter
+    private String dataAccessException;
 
     /**
      * Constructor.

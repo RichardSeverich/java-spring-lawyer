@@ -8,6 +8,9 @@ import com.lawyer.repository.RepositoryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.dao.DataAccessException;
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
+import org.hibernate.JDBCException;
 
 /**
  * Service.
@@ -33,7 +36,14 @@ public class StrategyPost<T> implements StrategyService {
         // Positive scenario
         T entity = helper.getEntity();
         helper.getList().add(entity);
-        repository.save(entity);
-        return responseBuilder.getResponseOkForPost();
+        try {
+            repository.save(entity);
+            return responseBuilder.getResponseOkForPost();
+        } catch (DataAccessException ex) {
+            helper.setDataAccessException(ex.getMostSpecificCause().getMessage());
+            //System.out.println(ex.getLocalizedMessage());
+            //System.out.println(ex.getMostSpecificCause());
+            return responseBuilder.getResponseDataAccessException();
+        }
     }
 }

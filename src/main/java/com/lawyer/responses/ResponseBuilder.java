@@ -117,4 +117,15 @@ public class ResponseBuilder<T> {
         this.buildBody();
         return this.response;
     }
+
+    /**
+     * @return responses.
+     */
+    public Response<T> getResponseDataAccessException() {
+        this.response.setHttpStatus(HttpStatus.CONFLICT);
+        this.message = helper.getDataAccessException();
+        this.buildBody();
+        return this.response;
+    }
+
 }
