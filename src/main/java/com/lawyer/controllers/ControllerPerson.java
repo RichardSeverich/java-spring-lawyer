@@ -1,12 +1,12 @@
 package com.lawyer.controllers;
 
-import com.lawyer.models.User;
+import com.lawyer.models.Person;
 import com.lawyer.responses.Response;
 import com.lawyer.responses.ResponseBody;
 import com.lawyer.services.Services;
 import com.lawyer.support.Paths;
-import com.lawyer.repository.RepositoryUsers;
 import com.lawyer.helpers.Helper;
+import com.lawyer.repository.RepositoryPersons;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,20 +21,21 @@ import javax.validation.Valid;
  * RestController.
  */
 @RestController
-public class ControllerUser {
+public class ControllerPerson {
 
-    private static final String ENTITY_NAME = "user";
-
-    @Autowired
-    private Services<User> services;
+    private static final String ENTITY_NAME = "person";
 
     @Autowired
-    private Helper<User> helper;
+    private Services<Person> services;
+
+    @Autowired
+    private Helper<Person> helper;
+
 
     /**
      * @return Response entity.
      */
-    @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_USERS)
+    @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_PERSON)
     public ResponseEntity<ResponseBody> getAll() {
         helper.setEntityName(ENTITY_NAME);
         Response response = services.getAll();
@@ -45,7 +46,7 @@ public class ControllerUser {
      * @param id id.
      * @return Response entity..
      */
-    @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_USERS_WITH_ID)
+    @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_PERSON_WITH_ID)
     public ResponseEntity<ResponseBody> getById(final @PathVariable Integer id) {
         helper.setEntityName(ENTITY_NAME);
         Response response = services.getById(id);
@@ -53,26 +54,26 @@ public class ControllerUser {
     }
 
     /**
-     * @param user user.
+     * @param person person.
      * @return Response entity.
      */
-    @RequestMapping(method = RequestMethod.POST, value = Paths.PATH_USERS)
-    public ResponseEntity<ResponseBody> add(final @RequestBody @Valid User user) {
-         helper.setEntityName(ENTITY_NAME);
-        Response response = services.add(user);
+    @RequestMapping(method = RequestMethod.POST, value = Paths.PATH_PERSON)
+    public ResponseEntity<ResponseBody> add(final @RequestBody @Valid Person person) {
+        helper.setEntityName(ENTITY_NAME);
+        Response response = services.add(person);
         return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
     }
 
     /**
-     * @param user user.
+     * @param person person.
      * @param id   id.
      * @return Response entity.
      */
-    @RequestMapping(method = RequestMethod.PUT, value = Paths.PATH_USERS_WITH_ID)
-    public ResponseEntity<ResponseBody> update(final @RequestBody @Valid User user, final @PathVariable Integer id) {
-         helper.setEntityName(ENTITY_NAME);
-        user.setId(id);
-        Response response = services.update(user, id);
+    @RequestMapping(method = RequestMethod.PUT, value = Paths.PATH_PERSON_WITH_ID)
+    public ResponseEntity<ResponseBody> update(final @RequestBody @Valid Person person, final @PathVariable Integer id) {
+        helper.setEntityName(ENTITY_NAME);
+        person.setId(id);
+        Response response = services.update(person, id);
         return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
     }
 
@@ -80,9 +81,9 @@ public class ControllerUser {
      * @param id id.
      * @return Response entity.
      */
-    @RequestMapping(method = RequestMethod.DELETE, value = Paths.PATH_USERS_WITH_ID)
+    @RequestMapping(method = RequestMethod.DELETE, value = Paths.PATH_PERSON_WITH_ID)
     public ResponseEntity<ResponseBody> delete(final @PathVariable Integer id) {
-         helper.setEntityName(ENTITY_NAME);
+        helper.setEntityName(ENTITY_NAME);
         Response response = services.delete(id);
         return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
     }

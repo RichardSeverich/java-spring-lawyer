@@ -23,5 +23,6 @@ CREATE TABLE person(
    birth_date DATE NOT NULL,
    telephone TEXT NOT NULL,
    address TEXT NOT NULL,
-   email TEXT NOT,
+   email TEXT,
+   PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;

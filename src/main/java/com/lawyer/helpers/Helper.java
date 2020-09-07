@@ -20,6 +20,8 @@ import lombok.Setter;
 public class Helper<T> {
 
     @Getter @Setter
+    private String entityName;
+    @Getter @Setter
     private Integer id;
     @Getter @Setter
     private T entity;
@@ -32,5 +34,6 @@ public class Helper<T> {
     public Helper() {
         this.id = 0;
         this.list = new ArrayList<>();
+        this.entityName = "";
     }
 }

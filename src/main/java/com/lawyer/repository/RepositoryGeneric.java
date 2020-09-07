@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * Interface.
  */
 @NoRepositoryBean
-public interface RepositoryEntity<T> extends JpaRepository<T, Integer> {
+public interface RepositoryGeneric<T> extends JpaRepository<T, Integer> {
 
 }

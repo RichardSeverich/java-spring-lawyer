@@ -1,12 +1,13 @@
 package com.lawyer.services.strategies;
 
 import com.lawyer.helpers.Helper;
-import com.lawyer.repository.RepositoryEntity;
 import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.services.StrategyService;
 import com.lawyer.responses.Response;
+import com.lawyer.repository.RepositoryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
 /**
@@ -16,20 +17,21 @@ import org.springframework.stereotype.Service;
 public class StrategyGetById<T> implements StrategyService {
 
     @Autowired
-    private RepositoryEntity<T> repository;
-
-    @Autowired
     private Helper<T> helper;
 
     @Autowired
     private ResponseBuilder<T> responseBuilder;
+
+    @Autowired
+    private RepositoryFactory repositoryFactory;
 
     /**
      * {@inheritDoc}
      */
     @Override
     public Response getResponse() {
-        T entity = repository.findById(helper.getId()).orElse(null);
+        JpaRepository repository = repositoryFactory.getRepository(helper.getEntityName());
+        T entity = (T) repository.findById(helper.getId()).orElse(null);
         // Negative scenario
         if (entity == null) {
           return responseBuilder.getResponseNotFound();
