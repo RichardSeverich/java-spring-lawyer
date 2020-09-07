@@ -30,7 +30,6 @@ public class StrategyGet<T> implements StrategyService {
      */
     @Override
     public Response getResponse() {
-        System.out.println(helper.getEntityName());
         JpaRepository repository = repositoryFactory.getRepository(helper.getEntityName());
         Iterable<T> iterable = repository.findAll();
         iterable.forEach(helper.getList()::add);

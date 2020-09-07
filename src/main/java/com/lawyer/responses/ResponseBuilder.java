@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
-import lombok.Setter;
 
 /**
  * Response Builder.
@@ -19,7 +18,6 @@ public class ResponseBuilder<T> {
     @Autowired
     private Helper<T> helper;
 
-    @Setter
     private String entityName;
 
     private Response<T> response;
@@ -32,7 +30,7 @@ public class ResponseBuilder<T> {
     public  ResponseBuilder() {
        this.response = new Response<>();
        this.message = "";
-       this.entityName = "entity";
+       this.entityName = "";
     }
 
     /**
@@ -47,6 +45,7 @@ public class ResponseBuilder<T> {
      * @return responses.
      */
     public Response<T> getResponseOkForGet() {
+        this.entityName = helper.getEntityName();
         this.response.setHttpStatus(HttpStatus.OK);
         this.message = ResponseMessage.getSuccessfully(entityName);
         this.buildBody();
@@ -57,6 +56,7 @@ public class ResponseBuilder<T> {
      * @return responses.
      */
     public Response<T> getResponseOkForPost() {
+        this.entityName = helper.getEntityName();
         this.response.setHttpStatus(HttpStatus.CREATED);
         this.message = ResponseMessage.createdSuccessfully(entityName);
         this.buildBody();
@@ -67,6 +67,7 @@ public class ResponseBuilder<T> {
      * @return responses.
      */
     public Response<T> getResponseOkForPut() {
+        this.entityName = helper.getEntityName();
         this.response.setHttpStatus(HttpStatus.OK);
         this.message = ResponseMessage.updatedSuccessfully(entityName);
         this.buildBody();
@@ -77,6 +78,7 @@ public class ResponseBuilder<T> {
      * @return responses.
      */
     public Response<T> getResponseOkForDelete() {
+        this.entityName = helper.getEntityName();
         this.response.setHttpStatus(HttpStatus.OK);
         this.message = ResponseMessage.deletedSuccessfully(entityName);
         this.buildBody();
@@ -87,6 +89,7 @@ public class ResponseBuilder<T> {
      * @return responses.
      */
     public Response<T> getResponseConflict() {
+        this.entityName = helper.getEntityName();
         this.response.setHttpStatus(HttpStatus.CONFLICT);
         this.message = ResponseMessage.entityAlreadyExist(entityName);
         this.buildBody();
@@ -97,6 +100,7 @@ public class ResponseBuilder<T> {
      * @return responses.
      */
     public Response<T> getResponseNotFound() {
+        this.entityName = helper.getEntityName();
         this.response.setHttpStatus(HttpStatus.NOT_FOUND);
         this.message = ResponseMessage.entityNotFound(entityName);
         this.buildBody();
@@ -107,6 +111,7 @@ public class ResponseBuilder<T> {
      * @return responses.
      */
     public Response<T> getResponseConflictEntityHasRelations() {
+        this.entityName = helper.getEntityName();
         this.response.setHttpStatus(HttpStatus.CONFLICT);
         this.message = ResponseMessage.entityHasRelation(entityName);
         this.buildBody();
