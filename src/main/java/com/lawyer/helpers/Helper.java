@@ -1,13 +1,10 @@
 package com.lawyer.helpers;
 
-import com.lawyer.models.User;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;

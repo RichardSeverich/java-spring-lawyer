@@ -2,7 +2,6 @@ package com.lawyer.controllers;
 
 import com.lawyer.helpers.Helper;
 import com.lawyer.models.User;
-import com.lawyer.repository.RepositoryUsers;
 import com.lawyer.responses.Response;
 import com.lawyer.responses.ResponseBody;
 import com.lawyer.services.Services;

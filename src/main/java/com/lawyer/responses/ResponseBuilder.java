@@ -1,8 +1,6 @@
 package com.lawyer.responses;
 
 import com.lawyer.helpers.Helper;
-import com.lawyer.models.User;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

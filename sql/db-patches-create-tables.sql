@@ -14,7 +14,7 @@ CREATE TABLE users(
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
-CREATE TABLE person(
+CREATE TABLE persons(
    id INT AUTO_INCREMENT,
    dni VARCHAR(7) NOT NULL UNIQUE,
    name VARCHAR(30) NOT NULL,
@@ -24,5 +24,23 @@ CREATE TABLE person(
    telephone TEXT NOT NULL,
    address TEXT NOT NULL,
    email TEXT,
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+CREATE TABLE person_demandant(
+   id INT AUTO_INCREMENT,
+   id_process INT NOT NULL,
+   id_person INT NOT NULL,
+   FOREIGN KEY (id_process) REFERENCES process(id),
+   FOREIGN KEY (id_person) REFERENCES persons(id)
+   PRIMARY KEY (id)
+)AUTO_INCREMENT=1000;
+
+CREATE TABLE person_defendant(
+   id INT AUTO_INCREMENT,
+   id_process INT NOT NULL,
+   id_person INT NOT NULL,
+   FOREIGN KEY (id_process) REFERENCES process(id),
+   FOREIGN KEY (id_person) REFERENCES persons(id)
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
