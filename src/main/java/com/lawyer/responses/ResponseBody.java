@@ -7,19 +7,19 @@ import lombok.Setter;
 
 
 /**
- *
- * @param <T> ResponseBody.
- */
+*
+* @param <T> ResponseBody.
+*/
 public class ResponseBody<T> {
 
-    @Getter @Setter
-    private String message;
-    @Getter @Setter
-    private List<T> data;
+  @Getter @Setter
+  private String message;
+  @Getter @Setter
+  private List<T> data;
 
-    /**
-     * Constructor.
-     */
-    public ResponseBody() {
-    }
+  /**
+  * Constructor.
+  */
+  public ResponseBody() {
+  }
 }

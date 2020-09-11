@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'io.spring.dependency-management'  version '1.0.8.RELEASE'
 	id 'java'
+	id 'checkstyle'
 }
 
 group = 'com.lawyer'
@@ -27,4 +28,9 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+checkstyle {
+    toolVersion = '7.7'
+    configFile = file("${rootProject.rootDir}/checkstyle/google_checks.xml")
 }

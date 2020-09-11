@@ -13,8 +13,13 @@ public class RepositoryFactory {
   @Autowired
   private RepositoryPersons repositoryPersons;
 
-  public JpaRepository getRepository(String entityName){
-    switch(entityName) {
+  /**
+   *.
+   * @param entityName.
+   * @return JpaRepository.
+   */
+  public JpaRepository getRepository(String entityName) {
+    switch (entityName) {
       case "user":
         return repositoryUsers;
       case "person":
