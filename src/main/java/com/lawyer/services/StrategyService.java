@@ -4,12 +4,12 @@ import com.lawyer.responses.Response;
 
 
 /**
- * Response.
- */
+* Response.
+*/
 public interface StrategyService {
 
-    /**
-     * @return Response.
-     */
-    Response getResponse();
+  /**
+  * @return Response.
+  */
+  Response getResponse();
 }

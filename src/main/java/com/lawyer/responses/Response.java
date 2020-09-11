@@ -1,24 +1,24 @@
 package com.lawyer.responses;
 
-import org.springframework.http.HttpStatus;
-
 import lombok.Getter;
 import lombok.Setter;
 
+import org.springframework.http.HttpStatus;
+
 /**
- * @param <T> Response.
- */
+* @param <T> Response.
+*/
 public class Response<T> {
 
-    @Getter @Setter
-    private HttpStatus httpStatus;
-    @Getter @Setter
-    private ResponseBody<T> body;
+  @Getter @Setter
+  private HttpStatus httpStatus;
+  @Getter @Setter
+  private ResponseBody<T> body;
 
-    /**
-     * Constructor.
-     */
-    public Response() {
-        body = new ResponseBody<>();
-    }
+  /**
+  * Constructor.
+  */
+  public Response() {
+    body = new ResponseBody<>();
+  }
 }
