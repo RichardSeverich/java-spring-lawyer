@@ -1,7 +1,6 @@
 package com.lawyer.services;
 
 import com.lawyer.helpers.Helper;
-import com.lawyer.models.User;
 import com.lawyer.responses.Response;
 import com.lawyer.services.strategies.StrategyDelete;
 import com.lawyer.services.strategies.StrategyGet;
@@ -16,8 +15,6 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public class Services<T> {
-
-  private StrategyManager strategyManager;
 
   // Import Strategies
   @Autowired
@@ -42,14 +39,13 @@ public class Services<T> {
   * Constructor.
   */
   Services() {
-    strategyManager = new StrategyManager();
   }
 
   /**
   * @return Response.
   */
   public Response getAll() {
-    return strategyManager.getResponse(strategyGet);
+    return strategyGet.getResponse();
   }
 
   /**
@@ -58,7 +54,7 @@ public class Services<T> {
   */
   public Response getById(final Integer id) {
     helper.setId(id);
-    return strategyManager.getResponse(strategyGetById);
+    return strategyGetById.getResponse();
   }
 
   /**
@@ -67,7 +63,7 @@ public class Services<T> {
   */
   public Response add(final T entity) {
     helper.setEntity(entity);
-    return strategyManager.getResponse(strategyPost);
+    return strategyPost.getResponse();
   }
 
   /**
@@ -78,7 +74,7 @@ public class Services<T> {
   public Response update(final T entity, final Integer id) {
     helper.setId(id);
     helper.setEntity(entity);
-    return strategyManager.getResponse(strategyPut);
+    return strategyPut.getResponse();
   }
 
   /**
@@ -87,6 +83,6 @@ public class Services<T> {
   */
   public Response delete(final Integer id) {
     helper.setId(id);
-    return strategyManager.getResponse(strategyDelete);
+    return strategyDelete.getResponse();
   }
 }

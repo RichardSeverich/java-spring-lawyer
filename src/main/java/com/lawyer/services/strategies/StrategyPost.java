@@ -5,8 +5,6 @@ import com.lawyer.repository.RepositoryFactory;
 import com.lawyer.responses.Response;
 import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.services.StrategyService;
-import org.hibernate.JDBCException;
-import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
