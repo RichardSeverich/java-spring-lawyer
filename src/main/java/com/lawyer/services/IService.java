@@ -6,7 +6,7 @@ import com.lawyer.responses.Response;
 /**
 * Response.
 */
-public interface StrategyService {
+public interface IService {
 
   /**
   * @return Response.

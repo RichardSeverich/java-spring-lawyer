@@ -4,7 +4,11 @@ import com.lawyer.helpers.Helper;
 import com.lawyer.models.User;
 import com.lawyer.responses.Response;
 import com.lawyer.responses.ResponseBody;
-import com.lawyer.services.Services;
+import com.lawyer.services.ServiceDelete;
+import com.lawyer.services.ServiceGet;
+import com.lawyer.services.ServiceGetById;
+import com.lawyer.services.ServicePost;
+import com.lawyer.services.ServicePut;
 import com.lawyer.support.Paths;
 
 import javax.validation.Valid;
@@ -26,7 +30,19 @@ public class ControllerUser {
   private static final String ENTITY_NAME = "user";
 
   @Autowired
-  private Services<User> services;
+  private ServiceGet<User> serviceGet;
+
+  @Autowired
+  private ServiceGetById<User> serviceGetById;
+
+  @Autowired
+  private ServicePost<User> servicePost;
+
+  @Autowired
+  private ServicePut<User> servicePut;
+
+  @Autowired
+  private ServiceDelete<User> serviceDelete;
 
   @Autowired
   private Helper<User> helper;
@@ -37,7 +53,7 @@ public class ControllerUser {
   @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_USERS)
   public ResponseEntity<ResponseBody> getAll() {
     helper.setEntityName(ENTITY_NAME);
-    Response response = services.getAll();
+    Response response = serviceGet.getResponse();
     return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
   }
 
@@ -48,7 +64,8 @@ public class ControllerUser {
   @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_USERS_WITH_ID)
   public ResponseEntity<ResponseBody> getById(final @PathVariable Integer id) {
     helper.setEntityName(ENTITY_NAME);
-    Response response = services.getById(id);
+    helper.setId(id);
+    Response response = serviceGetById.getResponse();
     return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
   }
 
@@ -59,7 +76,8 @@ public class ControllerUser {
   @RequestMapping(method = RequestMethod.POST, value = Paths.PATH_USERS)
   public ResponseEntity<ResponseBody> add(final @RequestBody @Valid User user) {
     helper.setEntityName(ENTITY_NAME);
-    Response response = services.add(user);
+    helper.setEntity(user);
+    Response response = servicePost.getResponse();
     return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
   }
 
@@ -72,8 +90,10 @@ public class ControllerUser {
   public ResponseEntity<ResponseBody> update(
       final @RequestBody @Valid User user, final @PathVariable Integer id) {
     helper.setEntityName(ENTITY_NAME);
+    helper.setId(id);
+    helper.setEntity(user);
     user.setId(id);
-    Response response = services.update(user, id);
+    Response response = servicePut.getResponse();
     return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
   }
 
@@ -84,7 +104,8 @@ public class ControllerUser {
   @RequestMapping(method = RequestMethod.DELETE, value = Paths.PATH_USERS_WITH_ID)
   public ResponseEntity<ResponseBody> delete(final @PathVariable Integer id) {
     helper.setEntityName(ENTITY_NAME);
-    Response response = services.delete(id);
+    helper.setId(id);
+    Response response = serviceDelete.getResponse();
     return ResponseEntity.status(response.getHttpStatus()).body(response.getBody());
   }
 }

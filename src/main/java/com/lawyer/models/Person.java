@@ -77,6 +77,14 @@ public class Person {
   @Getter @Setter
   private String email;
 
+  @Column(name = "creation_date")
+  @Getter @Setter
+  private String creationDate;
+
+  @Column(name = "update_date")
+  @Getter @Setter
+  private String updateDate;
+
   /**
   * Constructor.
   */
