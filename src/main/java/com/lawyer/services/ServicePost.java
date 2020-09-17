@@ -1,20 +1,20 @@
-package com.lawyer.services.strategies;
+package com.lawyer.services;
 
 import com.lawyer.helpers.Helper;
 import com.lawyer.repository.RepositoryFactory;
 import com.lawyer.responses.Response;
 import com.lawyer.responses.ResponseBuilder;
-import com.lawyer.services.StrategyService;
+import com.lawyer.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-
 
 /**
 * Service.
 */
 @Service
-public class StrategyGet<T> implements StrategyService {
+public class ServicePost<T> implements IService {
 
   @Autowired
   private Helper<T> helper;
@@ -31,8 +31,17 @@ public class StrategyGet<T> implements StrategyService {
   @Override
   public Response getResponse() {
     JpaRepository repository = repositoryFactory.getRepository(helper.getEntityName());
-    Iterable<T> iterable = repository.findAll();
-    iterable.forEach(helper.getList()::add);
-    return responseBuilder.getResponseOkForGet();
+    // Positive scenario
+    T entity = helper.getEntity();
+    helper.getList().add(entity);
+    try {
+      repository.save(entity);
+      return responseBuilder.getResponseOkForPost();
+    } catch (DataAccessException ex) {
+      helper.setDataAccessException(ex.getMostSpecificCause().getMessage());
+      //System.out.println(ex.getLocalizedMessage());
+      //System.out.println(ex.getMostSpecificCause());
+      return responseBuilder.getResponseDataAccessException();
+    }
   }
 }

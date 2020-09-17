@@ -19,7 +19,6 @@ INSERT INTO users (username, password, dni, name, father_last_name, mother_last_
 INSERT INTO users (username, password, dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email, type) VALUES ("icruz", "mysecret", "9985502", "Igor", "Cruz", "Loro", "1987-08-28", "74684784", "Av. Gusanito", "Igor.Cruz@gmail.com", "client");
 INSERT INTO users (username, password, dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email, type) VALUES ("dvera", "secret", "9985503",  "Daniel", "Vera", "Serrano", "1997-03-11", "78884487", "Av. Webar", "Daniel.Vera@gmail.com", "client");
 INSERT INTO users (username, password, dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email, type) VALUES ("nasa", "nasa", "9985504", "Keyur", "Rpuu", "Atroculope", "1997-04-10", "75594787", "Av. Inv. Las rutas", "Keyur.Rpuu@gmail.com", "client");
-
 -- Persons Data
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000000", "Karen", "Mendez", "Rodriguez", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000001", "Melisa", "Aguilar", "Vallejo", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
@@ -41,3 +40,5 @@ INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, 
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000017", "Carlos", "Person", "Person", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000018", "Diego", "Person", "Person", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000019", "Joao", "Person", "Person", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
+-- Process Data
+INSERT INTO process (description, number_process, court_number, matter, process_type, process_type_sub, admission_date, preliminary_audience_date, supplementary_audience_date, appeal_date, casacion_date, execution_sentence_date, state) VALUES ("robo", "1", "1", "materia", "tipo penal", "sub penal", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "abierto");
