@@ -28,7 +28,6 @@ public class SubProcessType {
   private Integer id;
 
   @NotNull
-  @Id
   @Column(name = "id_process_type")
   @Getter @Setter
   private Integer idProcessType;
