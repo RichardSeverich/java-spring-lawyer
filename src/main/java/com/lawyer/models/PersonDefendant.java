@@ -25,13 +25,11 @@ public class PersonDefendant {
   private Integer id;
 
   @NotNull
-  @Id
   @Column(name = "id_process")
   @Getter @Setter
   private Integer idProcess;
 
   @NotNull
-  @Id
   @Column(name = "id_person")
   @Getter @Setter
   private Integer idPerson;

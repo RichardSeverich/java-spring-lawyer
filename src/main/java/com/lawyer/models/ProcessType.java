@@ -28,7 +28,6 @@ public class ProcessType {
   private Integer id;
 
   @NotNull
-  @Id
   @Column(name = "id_matter")
   @Getter @Setter
   private Integer idMatter;

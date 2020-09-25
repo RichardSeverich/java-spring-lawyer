@@ -9,12 +9,12 @@ public final class Paths {
   private static final String USER = "/users";
   private static final String PERSON = "/persons";
   private static final String PROCESS = "/process";
-  private static final String PERSON_DEMANDANT = "/person_demandant";
-  private static final String PERSON_DEFENDANT = "/person_defendant";
-  private static final String PREVIOUS_CHARACTER = "/previous_character";
+  private static final String PERSON_DEMANDANT = "/person-demandant";
+  private static final String PERSON_DEFENDANT = "/person-defendant";
+  private static final String PREVIOUS_CHARACTER = "/previous-character";
   private static final String MATTER = "/matter";
-  private static final String PROCESS_TYPE = "/process_type";
-  private static final String SUB_PROCESS_TYPE = "/sub_process_type";
+  private static final String PROCESS_TYPE = "/process-type";
+  private static final String SUB_PROCESS_TYPE = "/sub-process-type";
   private static final String ID = "/{id}";
   // Users
   public static final String PATH_USERS = VERSION + USER;

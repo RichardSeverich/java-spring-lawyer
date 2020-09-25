@@ -51,7 +51,7 @@ public class ControllerMatter {
   /**
   * @return Response entity.
   */
-  @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_PERSON)
+  @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_MATTER)
   public ResponseEntity<ResponseBody> getAll() {
     helper.setEntityName(ENTITY_NAME);
     Response response = serviceGet.getResponse();
@@ -62,7 +62,7 @@ public class ControllerMatter {
   * @param id id.
   * @return Response entity..
   */
-  @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_PERSON_WITH_ID)
+  @RequestMapping(method = RequestMethod.GET, value = Paths.PATH_MATTER_WITH_ID)
   public ResponseEntity<ResponseBody> getById(final @PathVariable Integer id) {
     helper.setEntityName(ENTITY_NAME);
     helper.setId(id);
@@ -74,7 +74,7 @@ public class ControllerMatter {
   * @param matter matter.
   * @return Response entity.
   */
-  @RequestMapping(method = RequestMethod.POST, value = Paths.PATH_PERSON)
+  @RequestMapping(method = RequestMethod.POST, value = Paths.PATH_MATTER)
   public ResponseEntity<ResponseBody> add(final @RequestBody @Valid Matter matter) {
     helper.setEntityName(ENTITY_NAME);
     helper.setEntity(matter);
@@ -87,7 +87,7 @@ public class ControllerMatter {
   * @param id   id.
   * @return Response entity.
   */
-  @RequestMapping(method = RequestMethod.PUT, value = Paths.PATH_PERSON_WITH_ID)
+  @RequestMapping(method = RequestMethod.PUT, value = Paths.PATH_MATTER_WITH_ID)
   public ResponseEntity<ResponseBody> update(
       final @RequestBody @Valid Matter matter, final @PathVariable Integer id) {
     helper.setEntityName(ENTITY_NAME);
@@ -102,7 +102,7 @@ public class ControllerMatter {
   * @param id id.
   * @return Response entity.
   */
-  @RequestMapping(method = RequestMethod.DELETE, value = Paths.PATH_PERSON_WITH_ID)
+  @RequestMapping(method = RequestMethod.DELETE, value = Paths.PATH_MATTER_WITH_ID)
   public ResponseEntity<ResponseBody> delete(final @PathVariable Integer id) {
     helper.setEntityName(ENTITY_NAME);
     helper.setId(id);
