@@ -19,6 +19,7 @@ INSERT INTO users (username, password, dni, name, father_last_name, mother_last_
 INSERT INTO users (username, password, dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email, type) VALUES ("icruz", "mysecret", "9985502", "Igor", "Cruz", "Loro", "1987-08-28", "74684784", "Av. Gusanito", "Igor.Cruz@gmail.com", "client");
 INSERT INTO users (username, password, dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email, type) VALUES ("dvera", "secret", "9985503",  "Daniel", "Vera", "Serrano", "1997-03-11", "78884487", "Av. Webar", "Daniel.Vera@gmail.com", "client");
 INSERT INTO users (username, password, dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email, type) VALUES ("nasa", "nasa", "9985504", "Keyur", "Rpuu", "Atroculope", "1997-04-10", "75594787", "Av. Inv. Las rutas", "Keyur.Rpuu@gmail.com", "client");
+
 -- Persons Data
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000000", "Karen", "Mendez", "Rodriguez", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000001", "Melisa", "Aguilar", "Vallejo", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
@@ -40,5 +41,48 @@ INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, 
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000017", "Carlos", "Person", "Person", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000018", "Diego", "Person", "Person", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
 INSERT INTO persons (dni, name, father_last_name, mother_last_name, birth_date, telephone, address, email) VALUES ("0000019", "Joao", "Person", "Person", "1990-01-01", "76479009", "Av. Villazon km-5", "Admin@gmail.com");
--- Process Data
-INSERT INTO process (description, number_process, court_number, matter, process_type, process_type_sub, admission_date, preliminary_audience_date, supplementary_audience_date, appeal_date, casacion_date, execution_sentence_date, state) VALUES ("robo", "1", "1", "materia", "tipo penal", "sub penal", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "abierto");
+
+-- Process
+INSERT INTO process (description, number_process, court_number, matter, process_type, process_type_sub, admission_date, preliminary_audience_date, supplementary_audience_date, appeal_date, casacion_date, execution_sentence_date, state) VALUES ("Robo", "1", "1", "Civil", "Preliminar", "Conciliacion previa", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "inProgress");
+INSERT INTO process (description, number_process, court_number, matter, process_type, process_type_sub, admission_date, preliminary_audience_date, supplementary_audience_date, appeal_date, casacion_date, execution_sentence_date, state) VALUES ("Deuda", "2", "1", "Civil", "Ordinario", "Desalojo de vivienda", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "finished");
+INSERT INTO process (description, number_process, court_number, matter, process_type, process_type_sub, admission_date, preliminary_audience_date, supplementary_audience_date, appeal_date, casacion_date, execution_sentence_date, state) VALUES ("Estafa", "3", "1", "Civil", "Concursales", "Concurso voluntario", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "undefined");
+
+-- Process Person Demandant
+INSERT INTO person_demandant (id_process, id_person) VALUES (1000, 1000);
+INSERT INTO person_demandant (id_process, id_person) VALUES (1001, 1004);
+INSERT INTO person_demandant (id_process, id_person) VALUES (1001, 1006);
+
+-- Process Person Defendant
+INSERT INTO person_defendant (id_process, id_person) VALUES (1000, 1002);
+INSERT INTO person_defendant (id_process, id_person) VALUES (1001, 1005);
+INSERT INTO person_defendant (id_process, id_person) VALUES (1001, 1010);
+
+-- Matter
+INSERT INTO matter (name) VALUES ("Penal");
+INSERT INTO matter (name) VALUES ("Civil");
+INSERT INTO matter (name) VALUES ("Laboral");
+INSERT INTO matter (name) VALUES ("Familiar");
+INSERT INTO matter (name) VALUES ("Tributario");
+INSERT INTO matter (name) VALUES ("Administrativo");
+INSERT INTO matter (name) VALUES ("Constitucional");
+
+-- Process Type
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Preliminares");
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Precautorios");
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Ordinario");
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Extraordinario");
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Estructura monitoria");
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Ejecucion");
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Concursales");
+INSERT INTO process_type (id_matter, name) VALUES (1002, "Voluntarios");
+
+-- Sub Process Type
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Conciliacion previa");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Exencion de costas y costos");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Declaracion jurada");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Reconocimiento de firmas");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Exhibicion de bienes");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Nombramiento de defensor");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Designación de tutor");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Inspeccion judicial");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1002, "None");

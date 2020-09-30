@@ -47,7 +47,6 @@ public class ControllerPerson {
   @Autowired
   private Helper<Person> helper;
 
-
   /**
   * @return Response entity.
   */
