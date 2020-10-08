@@ -15,7 +15,10 @@ public final class Paths {
   private static final String MATTER = "/matter";
   private static final String PROCESS_TYPE = "/process-type";
   private static final String SUB_PROCESS_TYPE = "/sub-process-type";
+  private static final String LOGIN = "/login";
   private static final String ID = "/{id}";
+  // Login
+  public static final String PATH_LOGIN = VERSION + LOGIN;
   // Users
   public static final String PATH_USERS = VERSION + USER;
   public static final String PATH_USERS_WITH_ID = PATH_USERS + ID;
