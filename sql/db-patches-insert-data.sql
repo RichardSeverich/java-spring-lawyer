@@ -86,3 +86,9 @@ INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Nombramiento
 INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Designación de tutor");
 INSERT INTO sub_process_type (id_process_type, name) VALUES (1000, "Inspeccion judicial");
 INSERT INTO sub_process_type (id_process_type, name) VALUES (1002, "None");
+--
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "El embargo y secuestro");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Anotacion preventiva");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Intervencion judicial");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Inhibición  de bienes");
+INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Prohibición de innovar y contratar");

@@ -48,6 +48,9 @@ public final class Paths {
   public static final String PATH_SUB_PROCESS_TYPE_WITH_ID = PATH_SUB_PROCESS_TYPE + ID;
   // Process Person
   public static final String PROCESS_PERSON_DEMANDANT = VERSION + PROCESS + ID + PERSON_DEMANDANT;
+  public static final String PROCESS_PERSON_DEFENDANT = VERSION + PROCESS + ID + PERSON_DEFENDANT;
+  public static final String PROCESS_PREVIOUS_CHARACTER =
+      VERSION + PROCESS + ID + PREVIOUS_CHARACTER;
 
   /**
   * Private constructor for utility class.
