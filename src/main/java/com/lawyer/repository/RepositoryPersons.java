@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RepositoryPersons extends RepositoryGeneric<Person> {
- 
-  @Query(value = "SELECT persons.* FROM persons "+
-  "INNER JOIN person_defendant " +
-  "ON persons.id=person_defendant.id_person " +
-  "WHERE person_defendant.id_process = ?1", nativeQuery = true)
+
+  @Query(value = "SELECT persons.* FROM persons "
+      + "INNER JOIN person_defendant "
+      + "ON persons.id=person_defendant.id_person "
+      + "WHERE person_defendant.id_process = ?1", nativeQuery = true)
   Iterable<Person> findPersonDemandant(Integer processId);
 }

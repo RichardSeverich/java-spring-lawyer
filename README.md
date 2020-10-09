@@ -68,6 +68,15 @@ root, secret123
   <img src="documents/diagrama-clases.jpg">
 </p>
 
+## Usage
+
+### Default Token: 
+
+```
+Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiZHZlcmExIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0V
+SIl0sImlhdCI6MTYwMjEyMTQzMX0.Ee_NdiR3q2HY3nrjP4YY5B5sRs8udEjsZjTDqfT9MUAp8yxWTJ1FYmZZb-F50jeIyEqmQwSXlxejuadeFlI25Q
+```
+
 ## Contributing
 
 1. Fork it!
