@@ -46,7 +46,7 @@ public final class Paths {
   // Sub Process Type
   public static final String PATH_SUB_PROCESS_TYPE = VERSION + SUB_PROCESS_TYPE;
   public static final String PATH_SUB_PROCESS_TYPE_WITH_ID = PATH_SUB_PROCESS_TYPE + ID;
- // Process Person
+  // Process Person
   public static final String PROCESS_PERSON_DEMANDANT = VERSION + PROCESS + ID + PERSON_DEMANDANT;
 
   /**

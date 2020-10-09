@@ -9,7 +9,6 @@ import com.lawyer.responses.ResponseBuilder;
 import com.lawyer.security.JWTToken;
 import com.lawyer.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 

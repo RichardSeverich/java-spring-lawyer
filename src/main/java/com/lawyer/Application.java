@@ -14,21 +14,21 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 
-	@EnableWebSecurity
-	@Configuration
-	class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+  @EnableWebSecurity
+  @Configuration
+  class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http.csrf().disable()
-				.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-				.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
-				.anyRequest().authenticated();
-		}
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+      http.csrf().disable()
+        .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+        .authorizeRequests()
+        .antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
+        .anyRequest().authenticated();
+    }
+  }
 }

@@ -30,3 +30,6 @@ FROM persons
 INNER JOIN person_defendant
 ON persons.id=person_defendant.id_person
 WHERE person_defendant.id_process = 1001;
+
+-- AUTHENTICATION
+SELECT * FROM users WHERE username = 'admin' AND password = 'admin123';
