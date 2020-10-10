@@ -27,10 +27,10 @@ public class ControllerLogin {
   @Autowired
   private Helper<UserAuth> helper;
 
-/**
- * @param userAuth userAuth.
- * @return Response Entity.
- */
+  /**
+  * @param userAuth userAuth.
+  * @return Response Entity.
+  */
   @RequestMapping(method = RequestMethod.POST, value = Paths.PATH_LOGIN)
   public ResponseEntity<ResponseBody> login(final @RequestBody @Valid UserAuth userAuth) {
     helper.setEntityName(ENTITY_NAME);
