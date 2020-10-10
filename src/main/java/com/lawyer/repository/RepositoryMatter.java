@@ -4,8 +4,8 @@ import com.lawyer.models.Matter;
 import org.springframework.stereotype.Repository;
 
 /**
- * Interface.
- */
+* Interface.
+*/
 @Repository
 public interface RepositoryMatter extends RepositoryGeneric<Matter> {
 

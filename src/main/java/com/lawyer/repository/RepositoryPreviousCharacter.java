@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
- * Interface.
- */
+* Interface.
+*/
 @Repository
 public interface RepositoryPreviousCharacter extends RepositoryGeneric<PreviousCharacter> {
 

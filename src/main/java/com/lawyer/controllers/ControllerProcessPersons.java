@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * RestController.
  */
 @RestController
-public class ControllerProcessRelations {
+public class ControllerProcessPersons {
 
   @Autowired
   private ServicePersonsDemandant servicePersonsDemandant;
