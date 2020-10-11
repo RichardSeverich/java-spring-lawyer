@@ -77,6 +77,12 @@ Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiZHZlcmExIiwiYXV0
 SIl0sImlhdCI6MTYwMjEyMTQzMX0.Ee_NdiR3q2HY3nrjP4YY5B5sRs8udEjsZjTDqfT9MUAp8yxWTJ1FYmZZb-F50jeIyEqmQwSXlxejuadeFlI25Q
 ```
 
+### Swagger Example:
+
+```
+http://localhost:8080/swagger-ui.html
+```
+
 ## Contributing
 
 1. Fork it!
