@@ -37,7 +37,7 @@ public class ServiceLogin implements IService {
     Iterable<User> iterable = repositoryUsers.findUsers(username, password);
     boolean isEmpty = iterable.iterator().hasNext();
     // Negative scenario
-    if (isEmpty) {
+    if (!isEmpty) {
       return responseBuilder.getResponseNotFound();
     }
     // Positive scenario

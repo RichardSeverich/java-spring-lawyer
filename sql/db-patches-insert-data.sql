@@ -92,3 +92,6 @@ INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Anotacion pr
 INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Intervencion judicial");
 INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Inhibicion de bienes");
 INSERT INTO sub_process_type (id_process_type, name) VALUES (1001, "Prohibicion de innovar y contratar");
+
+-- Previous Character
+INSERT INTO previous_character (id_process, notification_date, description, state) VALUES (1000, "1990-01-01", "Robo", "abierto");
