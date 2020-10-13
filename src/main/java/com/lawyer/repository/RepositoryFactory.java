@@ -32,7 +32,7 @@ public class RepositoryFactory {
   private RepositorySubProcessType repositorySubProcessType;
 
   @Autowired
-  private RepositorySubProcessType repositoryPreviousCharacter;
+  private RepositoryPreviousCharacter repositoryPreviousCharacter;
 
   /**
    *.
@@ -51,7 +51,7 @@ public class RepositoryFactory {
         return repositoryPersonDefendant;
       case "person_demandant":
         return repositoryPersonDemandant;
-      case "previuos_character":
+      case "previous_character":
         return repositoryPreviousCharacter;
       case "process":
         return repositoryProcess;

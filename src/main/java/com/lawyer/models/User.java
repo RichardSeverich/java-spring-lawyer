@@ -97,11 +97,11 @@ public class User {
   @Getter @Setter
   private String type;
 
-  @Column(name = "creation_date")
+  @Column(name = "creation_date", insertable = false, updatable = false)
   @Getter @Setter
   private String creationDate;
 
-  @Column(name = "update_date")
+  @Column(name = "update_date", insertable = false, updatable = false)
   @Getter @Setter
   private String updateDate;
 

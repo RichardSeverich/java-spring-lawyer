@@ -29,19 +29,19 @@ public class Process {
   private Integer id;
 
   @NotNull
-  @Size(min = Magic.TRHEE, max = Magic.THIRTY)
+  @Size(max = Magic.THIRTY)
   @Column(name = "description")
   @Getter @Setter
   private String description;
 
   @NotNull
-  @Size(min = Magic.TRHEE, max = Magic.THIRTY)
+  @Size(max = Magic.THIRTY)
   @Column(name = "number_process")
   @Getter @Setter
   private String numberProcess;
 
   @NotNull
-  @Size(min = Magic.TRHEE, max = Magic.THIRTY)
+  @Size(max = Magic.THIRTY)
   @Column(name = "court_number")
   @Getter @Setter
   private String courtNumber;
@@ -113,11 +113,11 @@ public class Process {
   @Getter @Setter
   private String state;
 
-  @Column(name = "creation_date")
+  @Column(name = "creation_date", insertable = false, updatable = false)
   @Getter @Setter
   private String creationDate;
 
-  @Column(name = "update_date")
+  @Column(name = "update_date", insertable = false, updatable = false)
   @Getter @Setter
   private String updateDate;
 
