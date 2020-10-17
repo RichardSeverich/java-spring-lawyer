@@ -61,6 +61,14 @@ public class PreviousCharacter {
   @Getter @Setter
   private String updateDate;
 
+  @Column(name = "created_by", updatable = false)
+  @Getter @Setter
+  private String createdBy;
+
+  @Column(name = "updated_by", insertable = false)
+  @Getter @Setter
+  private String updatedBy;
+
   /**
   * Constructor.
   */

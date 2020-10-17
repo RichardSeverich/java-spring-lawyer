@@ -13,6 +13,9 @@ TRUNCATE TABLE users;
 -- DELETE TABLE: detele the table.
 DROP TABLE users;
 
+-- DELETE SPECIFIC ROW.
+DELETE FROM users WHERE id = 1000;
+
 -- WHERE CONDITIONAL
 
 SELECT previous_character.*

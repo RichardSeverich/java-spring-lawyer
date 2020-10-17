@@ -41,7 +41,7 @@ public class User {
   private String password;
 
   @NotNull
-  @Size(min = Magic.SEVEN, max = Magic.SEVEN)
+  @Size(min = Magic.TRHEE, max = Magic.TEN)
   @Column(name = "dni")
   @Getter @Setter
   private String dni;
@@ -104,6 +104,14 @@ public class User {
   @Column(name = "update_date", insertable = false, updatable = false)
   @Getter @Setter
   private String updateDate;
+
+  @Column(name = "created_by", updatable = false)
+  @Getter @Setter
+  private String createdBy;
+
+  @Column(name = "updated_by", insertable = false)
+  @Getter @Setter
+  private String updatedBy;
 
   /**
   * Constructor.

@@ -13,6 +13,10 @@ CREATE TABLE users(
    type VARCHAR(6) NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(10),
+   updated_by VARCHAR(10),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -28,6 +32,10 @@ CREATE TABLE persons(
    email TEXT,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(10) NOT NULL,
+   updated_by VARCHAR(10),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -48,6 +56,10 @@ CREATE TABLE process(
    state TEXT NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(10) NOT NULL,
+   updated_by VARCHAR(10),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
@@ -77,7 +89,11 @@ CREATE TABLE previous_character(
    state TEXT NOT NULL,
    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
    update_date DATETIME ON UPDATE CURRENT_TIMESTAMP,
+   created_by VARCHAR(10) NOT NULL,
+   updated_by VARCHAR(10),
    FOREIGN KEY (id_process) REFERENCES process(id),
+   FOREIGN KEY (created_by) REFERENCES users(username),
+   FOREIGN KEY (updated_by) REFERENCES users(username),
    PRIMARY KEY (id)
 )AUTO_INCREMENT=1000;
 
