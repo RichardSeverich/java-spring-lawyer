@@ -1,12 +1,13 @@
 # java-spring-lawyer
 
-This project is a very basic example of crud only with browser supported java-script
+This project is a lawyer process management system, it has Swagger in order to see all the endpoints and models.
+also it is using token authentication or authorization.
 
 ## Prerequisites 🔨
 
 1. Install Windows 10
 2. Install gradle-6.4.1
-3. Install 1.8.0_201
+3. Install java 1.8.0_201
 4. Install Mysql 5
 
 ### Optional install mysql db in docker
@@ -114,6 +115,22 @@ http://localhost:8080/swagger-ui.html
 </p>
 
 ### API:
+
+#### Login:
+
+```
+POST localhost:8080/api/v1/login
+
+{
+  "username": "admin",
+  "password": "admin123"
+  "token": "Bearer ..."
+}
+```
+
+<p align="center">
+  <img src="documents/login.jpg">
+</p>
 
 #### Users:
 
